@@ -5,7 +5,7 @@ package com.primary;
  * @create 2018-05-29 13:44
  * @desc 买卖股票的最佳时机 II
  * 思路：只要第二天的股票的价格 比第一天的价格高，就进行一次买卖
- * 算法：贪心算法
+ * 算法：贪心算法------https://baike.baidu.com/item/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/5411800?fr=aladdin
  **/
 public class MaxProfit {
 
