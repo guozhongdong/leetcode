@@ -1,4 +1,4 @@
-package com.primary;
+package com.primary.array;
 
 import java.util.ArrayList;
 import java.util.HashMap;

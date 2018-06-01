@@ -1,4 +1,4 @@
-package com.primary;
+package com.primary.array;
 
 /**
  * @author gzd

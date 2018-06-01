@@ -1,4 +1,4 @@
-package com.primary;
+package com.primary.array;
 
 import java.util.HashSet;
 import java.util.Set;
