@@ -8,5 +8,9 @@ package com.primary;
 public class Test {
     public static void main(String[] args){
      //Ha
+        long num = 32;
+        System.out.println(31%32);
+        System.out.println(num << 32);
+
     }
 }
