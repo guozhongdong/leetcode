@@ -7,33 +7,24 @@ package com.medium.math;
  *  =======================
  *  测试用例没提交成功，
  *  一个是尾数0 的个数，一个数结果集中所有0的个数，
+ *  ====================================
+ *  思路错误，开始求的直接乘的和 发现long类型存不下
+ *  网上资料，阶乘后面的0 ，可以用10^K = 2^k*5^k,求得5的个数
+ *
  **/
 public class TrailingZeroes {
 
     public int trailingZeroes(int n) {
-        if (n == 0 ){
-            return 0;
+        int sum = 0;
+        while (n > 0){
+            sum += n/5;
+            n /= 5;
         }
-        int sum = 1;
-        while (n > 1){
-            sum = sum * n;
-            n--;
-        }
-        /*int count = 0;
-        while (sum%10 == 0){
-            count++;
-            sum = sum/10;
-        }*/
-        int count = 0;
-        int num = new TrailingZeroes().trailingZeroes(7);
-        System.out.println(count);
-        //System.out.println(sum % 10);
-        System.out.println(sum);
-        return count;
+        return sum;
     }
 
     public static void main(String[] args){
-        int num = new TrailingZeroes().trailingZeroes(10);
+        int num = new TrailingZeroes().trailingZeroes(13);
         System.out.println(num);
     }
 }
