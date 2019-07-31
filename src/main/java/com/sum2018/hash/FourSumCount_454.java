@@ -1,5 +1,8 @@
 package com.sum2018.hash;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author gzd
  * @date 2019/7/30 下午7:48
@@ -25,8 +28,10 @@ package com.sum2018.hash;
  * 两个元组如下:
  * 1. (0, 0, 0, 1) -> A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
  * 2. (1, 1, 0, 0) -> A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0
- * 思路：
  *
+ * 思路：参考题解
+ * 使用hash表+两次循环，计算任意两组的和，记录出现的次数，再计算另外两组出现的相反数。
+ * 之后，相加value出现的次数。
  *
  *
  */
@@ -43,20 +48,28 @@ public class FourSumCount_454 {
     }
 
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
+        Map<Integer,Integer> map = new HashMap<>(500);
+        //map.getOrDefault()
         int count = 0;
-        for (int i = 0; i < A.length ; i++) {
-            for (int j = 0; j < B.length; j++) {
-                for (int k = 0; k < C.length; k++) {
-                    for (int l = 0; l < D.length ; l++) {
-                       if (A[i] + B[j]+C[k]+D[l] == 0 ){
-                           count++;
-                           continue;
-                       }
+        int len = A.length;
+        for (int i = 0; i < len; i++) {
+            for (int j = 0;  j< len; j++) {
+                int sum = A[i]+B[j];
 
-                    }
-                }
+                map.put(sum,map.getOrDefault(sum,0)+1);
+
             }
         }
+        for (int i = 0; i < len; i++) {
+            for (int j = 0;  j< len; j++) {
+                int sum = C[i]+D[j];
+
+                    count += map.getOrDefault(-sum,0);
+
+
+            }
+        }
+
         return count;
     }
 }
