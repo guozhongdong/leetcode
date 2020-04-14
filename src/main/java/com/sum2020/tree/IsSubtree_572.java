@@ -63,6 +63,7 @@ public class IsSubtree_572 {
 
         System.out.println(str.indexOf(str1) > 0);
         System.out.println(new IsSubtree_572().isSubtree2(treeNode,treeNode1));
+        System.out.println(new IsSubtree_572().isSubtree3(treeNode,treeNode1));
 
     }
     public boolean isSubtree(TreeNode s, TreeNode t) {
@@ -109,5 +110,37 @@ public class IsSubtree_572 {
             return false;
         }
         return s.val == t.val && (compare(s.left,t.left) && compare(s.right,t.right));
+    }
+
+    /**
+     * 自己跟着优秀题解，在来一遍
+     * 分三种情况，一种是两个根节点直接相等，
+     * equals(s,t)
+     * 还有两种是 t 跟 s 的左节点或者 右节点相等，
+     * isSubtree2(s.left,t)  || isSubtree2(s.right,t)
+     * 只要有一种满足，即可。
+     * */
+    public boolean isSubtree3(TreeNode s,TreeNode t){
+        if (s == null && t == null){
+            return true;
+        }else if (s == null || t ==null){
+            return false;
+        }
+        if (s.val == t.val){
+           return  (equals(s,t) || (isSubtree3(s.left,t)) || isSubtree3(s.right,t));
+        }
+        return isSubtree3(s.left,t) || isSubtree3(s.right,t);
+    }
+
+    public boolean equals(TreeNode s,TreeNode t){
+        if (s == null && t == null){
+            return true;
+        }else if (s == null || t ==null){
+            return false;
+        }
+        if (s.val == t.val){
+            return equals(s.left,t.left) && equals(s.right,t.right);
+        }
+        return false;
     }
 }
