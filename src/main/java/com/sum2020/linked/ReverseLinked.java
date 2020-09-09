@@ -11,6 +11,7 @@ package com.sum2020.linked;
  * 更新当前节点
  * 更新主节点
  *
+ * 简单粗暴的方法，就是遍历两次
  *
  */
 public class ReverseLinked {
