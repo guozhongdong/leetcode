@@ -44,7 +44,11 @@ public class SplitListToParts_725 {
         ListNode node = new ListNode(1);
         node.next = new ListNode(2);
         node.next.next = new ListNode(3);
-        node.next.next.next = new ListNode(4);
+       /* node.next.next.next = new ListNode(4);
+        node.next.next.next.next = new ListNode(5);
+        node.next.next.next.next.next = new ListNode(6);
+        node.next.next.next.next.next.next = new ListNode(7);*/
+
         new SplitListToParts_725().splitListToParts(node,5);
     }
 
@@ -61,21 +65,20 @@ public class SplitListToParts_725 {
         // 多出来的一个元素
         int res =  count%k;
         newHead = root;
-        if (k >= count){
-            for (int i = 0; i < k; i++) {
-                //定义一个 隐形头结点，
-                ListNode node = new ListNode(0),write = node;
-                // i<res ? 1: 0 判断是否有余数，有的话，就得在每一部分给加上。
-                for (int j = 0; j < width+(i < res?1:0); j++) {
-                    write = write.next = new ListNode(newHead.val);
-                    if (newHead != null){
-                        newHead = newHead.next;
-                    }
+        for (int i = 0; i < k; i++) {
+            //定义一个 隐形头结点，
+            ListNode node = new ListNode(0),write = node;
+            // i<res ? 1: 0 判断是否有余数，有的话，就得在每一部分给加上。
+            for (int j = 0; j < width+(i < res?1:0); j++) {
+                write.next = new ListNode(newHead.val);
+                write = write.next;
+                if (newHead != null){
+                    newHead = newHead.next;
                 }
-                result[i] = node;
-
             }
+            result[i] = node.next;
         }
+
         return result;
     }
 }
